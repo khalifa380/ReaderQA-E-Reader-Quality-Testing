@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ReaderQA is a beginner-friendly e-reader and manual QA testing simulator portfolio project.">
+  <title>ReaderQA — E-Reader QA Simulator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">R</div>
+        <div><strong>ReaderQA</strong><span>QUALITY LAB</span></div>
+      </div>
+      <div class="nav-label">WORKSPACE</div>
+      <button class="nav-item active" data-view="reader"><span>▤</span> E-reader <kbd>01</kbd></button>
+      <button class="nav-item" data-view="dashboard"><span>▦</span> QA dashboard <kbd>02</kbd></button>
+      <button class="nav-item" data-view="tests"><span>☷</span> Test cases <kbd>03</kbd></button>
+      <button class="nav-item" data-view="defects"><span>⚑</span> Defect log <kbd>04</kbd></button>
+      <button class="nav-item" data-view="regression"><span>↻</span> Regression <kbd>05</kbd></button>
+      <div class="sidebar-note">
+        <div class="note-icon">✓</div>
+        <strong>Practice environment</strong>
+        <p>Record your own test results. No tests are pre-marked as passed.</p>
+      </div>
+      <div class="sidebar-footer"><span class="online-dot"></span> Local workspace <span>v1.0</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">SOFTWARE QUALITY ASSURANCE</div>
+          <h1 id="page-title">E-reader application</h1>
+          <p id="page-subtitle">Explore the sample reader, then verify its behavior with your test suite.</p>
+        </div>
+        <div class="top-actions">
+          <span class="local-badge"><span class="online-dot"></span> Local demo</span>
+          <button class="button button-light" id="reset-demo">Reset demo data</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-reader">
+        <div class="reader-layout">
+          <div class="reader-main">
+            <div class="section-heading">
+              <div><div class="eyebrow">READING ROOM</div><h2>Field Notes on the Natural World</h2></div>
+              <span class="pill neutral">Sample book · 5 pages</span>
+            </div>
+            <div class="reader-toolbar">
+              <label class="search-field"><span>⌕</span><input id="book-search" type="search" placeholder="Search this book…" aria-label="Search this book"><button id="clear-search" class="icon-button" aria-label="Clear search">×</button></label>
+              <div class="font-controls"><span>A</span><button id="font-down" class="icon-button" aria-label="Decrease font size">−</button><button id="font-up" class="icon-button" aria-label="Increase font size">+</button><span class="font-size-label" id="font-label">18px</span></div>
+            </div>
+            <div id="search-message" class="inline-message hidden" role="status"></div>
+            <div id="search-results" class="search-results hidden"></div>
+            <article class="book-page">
+              <div class="book-page-top"><span id="chapter-label">CHAPTER 01</span><span id="bookmark-indicator">♡ Not bookmarked</span></div>
+              <div class="book-content" id="book-content">
+                <h2>Learning to Observe</h2>
+                <p>Careful observation begins with patience. A reader, a researcher, or a tester learns to notice small details before drawing a conclusion. A useful note describes what happened, when it happened, and what evidence supports the observation.</p>
+                <p>On an early morning walk, the same path can appear different from one day to the next. Light changes, leaves move, and the sound of birds shifts with the weather. Recording these details makes comparison possible.</p>
+              </div>
+              <div class="book-page-bottom"><span>FIELD NOTES SERIES</span><span id="page-counter">Page 1 of 5</span></div>
+            </article>
+            <div class="reader-controls">
+              <button class="button button-light" id="prev-page">← Previous page</button>
+              <div class="progress-wrap"><div class="progress-meta"><span>Reading progress</span><strong id="progress-percent">20%</strong></div><div class="progress-track"><div id="progress-bar" class="progress-bar" style="width:20%"></div></div></div>
+              <button class="button button-primary" id="next-page">Next page →</button>
+            </div>
+            <div class="reader-bottom-row">
+              <button id="toggle-bookmark" class="button button-light">♡ Add bookmark</button>
+              <span id="reader-feedback" class="muted" role="status">Your reading progress is saved on this device.</span>
+            </div>
+          </div>
+          <aside class="reader-aside">
+            <div class="aside-card">
+              <div class="aside-card-heading"><div class="mini-icon">▤</div><div><h3>Book details</h3><p>Current reading session</p></div></div>
+              <div class="detail-row"><span>Pages</span><strong>5</strong></div>
+              <div class="detail-row"><span>Current page</span><strong id="aside-current-page">1 / 5</strong></div>
+              <div class="detail-row"><span>Font size</span><strong id="aside-font">18 px</strong></div>
+              <div class="detail-row"><span>Bookmarks</span><strong id="bookmark-count">0</strong></div>
+            </div>
+            <div class="aside-card">
+              <div class="aside-card-heading"><div class="mini-icon lilac">⌕</div><div><h3>Quick search</h3><p>Search all five pages</p></div></div>
+              <p class="aside-copy">Search is case-insensitive. Select a result to jump to the matching page.</p>
+              <div class="tip"><strong>QA tip</strong><p>Try a word that exists, a word that does not exist, and an empty query.</p></div>
+            </div>
+            <div class="aside-card saved-card"><div class="saved-check">✓</div><div><strong>Local persistence</strong><p>Page, font size and bookmarks are stored in this browser.</p></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-dashboard">
+        <div class="section-heading"><div><div class="eyebrow">TEST EXECUTION OVERVIEW</div><h2>Quality summary</h2><p class="section-description">Your metrics update as you record test outcomes and defects.</p></div><button class="button button-primary" data-go="tests">Review test cases →</button></div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-top"><span>Total test cases</span><span class="stat-icon blue">☷</span></div><div class="stat-number" id="stat-total">25</div><div class="stat-foot">In the current test suite</div></div>
+          <div class="stat-card"><div class="stat-top"><span>Executed tests</span><span class="stat-icon purple">✓</span></div><div class="stat-number" id="stat-executed">0</div><div class="stat-foot">Pass + Fail results recorded</div></div>
+          <div class="stat-card"><div class="stat-top"><span>Passed</span><span class="stat-icon green">↗</span></div><div class="stat-number" id="stat-pass">0</div><div class="stat-foot">Marked Pass by you</div></div>
+          <div class="stat-card"><div class="stat-top"><span>Failed</span><span class="stat-icon red">!</span></div><div class="stat-number" id="stat-fail">0</div><div class="stat-foot">Marked Fail by you</div></div>
+          <div class="stat-card"><div class="stat-top"><span>Blocked</span><span class="stat-icon amber">Ⅱ</span></div><div class="stat-number" id="stat-blocked">0</div><div class="stat-foot">Unable to execute</div></div>
+          <div class="stat-card"><div class="stat-top"><span>Open defects</span><span class="stat-icon rose">⚑</span></div><div class="stat-number" id="stat-defects">0</div><div class="stat-foot">New or In Progress</div></div>
+        </div>
+        <div class="dashboard-grid">
+          <div class="panel"><div class="panel-heading"><div><h3>Test execution status</h3><p>Distribution of recorded outcomes</p></div><span class="pill neutral">Live summary</span></div><div id="status-chart" class="status-chart"></div><div id="status-legend" class="legend"></div></div>
+          <div class="panel"><div class="panel-heading"><div><h3>Getting started</h3><p>Suggested QA workflow</p></div></div><ol class="workflow"><li><span>1</span><div><strong>Explore the reader</strong><p>Try each feature and boundary condition.</p></div></li><li><span>2</span><div><strong>Execute test cases</strong><p>Record actual outcomes in the test suite.</p></div></li><li><span>3</span><div><strong>Log defects</strong><p>Capture reproducible failures with evidence.</p></div></li><li><span>4</span><div><strong>Run regression</strong><p>Retest features after a change or fix.</p></div></li></ol></div>
+        </div>
+        <div class="panel recent-panel"><div class="panel-heading"><div><h3>Recent test cases</h3><p>First five cases from the test suite</p></div><button class="text-button" data-go="tests">View all →</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Feature</th><th>Scenario</th><th>Status</th></tr></thead><tbody id="recent-tests"></tbody></table></div></div>
+      </section>
+
+      <section class="view" id="view-tests">
+        <div class="section-heading"><div><div class="eyebrow">TEST MANAGEMENT</div><h2>Test cases</h2><p class="section-description">Run automated checks against the ReaderQA demo, or record a manual test.</p></div><div class="test-toolbar-actions"><button class="button button-primary" id="run-all-tests">▶ Run all tests</button><button class="button button-light" id="export-tests">Export CSV ↓</button></div></div>
+        <div class="panel">
+          <div class="filter-row"><label class="search-field table-search"><span>⌕</span><input id="test-search" type="search" placeholder="Search ID, feature, scenario…"></label><label class="select-label">Status <select id="test-status-filter"><option value="All">All statuses</option><option>Not Run</option><option>Pass</option><option>Fail</option><option>Blocked</option></select></label><span class="result-count" id="test-count">25 test cases</span></div><div id="live-test-summary" class="live-test-summary" aria-live="polite"><strong>Live test runner ready</strong><span>Select Run on a test case to execute it and compare expected versus actual behavior.</span></div>
+          <div class="table-wrap test-table-wrap"><table class="wide-table"><thead><tr><th>Test ID</th><th>Feature</th><th>Test scenario</th><th>Test steps</th><th>Expected result</th><th>Actual result</th><th>Status</th><th>Live run</th><th>Remarks</th></tr></thead><tbody id="test-table-body"></tbody></table></div>
+          <p class="table-note">Use Run to execute an automated check. These checks test the local ReaderQA demo, not a real Kindle device or Amazon production system. Manual results can still be entered where needed. Changes are saved in this browser.</p>
+        </div>
+      </section>
+
+      <section class="view" id="view-defects">
+        <div class="section-heading"><div><div class="eyebrow">ISSUE TRACKING</div><h2>Defect log</h2><p class="section-description">Record reproducible issues found during your testing.</p></div><button class="button button-primary" id="show-defect-form">＋ Add defect</button></div>
+        <div id="defect-form-panel" class="panel form-panel hidden">
+          <div class="panel-heading"><div><h3>New defect report</h3><p>Use clear, reproducible steps and objective observations.</p></div><button class="icon-button" id="hide-defect-form" aria-label="Close form">×</button></div>
+          <form id="defect-form" class="defect-form">
+            <label>Bug ID<input id="bug-id" name="bugId" placeholder="BUG-001" required maxlength="20"></label>
+            <label>Title<input id="bug-title" name="title" placeholder="Short summary of the issue" required maxlength="120"></label>
+            <label class="span-2">Steps to reproduce<textarea id="bug-steps" name="steps" placeholder="1. Open the reader&#10;2. ..." required rows="3" maxlength="2000"></textarea></label>
+            <label>Expected result<textarea id="bug-expected" name="expected" required rows="2" maxlength="1000"></textarea></label>
+            <label>Actual result<textarea id="bug-actual" name="actual" required rows="2" maxlength="1000"></textarea></label>
+            <label>Severity<select id="bug-severity" name="severity"><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select></label>
+            <label>Status<select id="bug-status" name="status"><option>New</option><option>In Progress</option><option>Resolved</option><option>Closed</option></select></label>
+            <div class="form-actions span-2"><p class="form-error" id="defect-error" role="alert"></p><button type="button" class="button button-light" id="cancel-defect">Cancel</button><button type="submit" class="button button-primary">Save defect</button></div>
+          </form>
+        </div>
+        <div class="panel"><div class="panel-heading"><div><h3>Reported defects</h3><p id="defect-subtitle">No defects recorded yet.</p></div><label class="select-label">Filter <select id="defect-filter"><option value="All">All defects</option><option>Open</option><option>Resolved</option><option>Closed</option></select></label></div><div id="defect-empty" class="empty-state"><div class="empty-icon">⚑</div><h3>No defects recorded</h3><p>Add a defect only after observing a real failure. Simulated examples should be clearly labelled.</p><button class="button button-light" data-show-defect>Add your first defect</button></div><div class="table-wrap"><table><thead><tr><th>Bug ID</th><th>Title</th><th>Severity</th><th>Steps to reproduce</th><th>Expected / Actual</th><th>Status</th><th>Action</th></tr></thead><tbody id="defect-table-body"></tbody></table></div></div>
+      </section>
+
+      <section class="view" id="view-regression">
+        <div class="section-heading"><div><div class="eyebrow">BUILD VERIFICATION</div><h2>Regression testing</h2><p class="section-description">Repeat relevant tests after a change and record the new result.</p></div><button class="button button-primary" id="start-regression">＋ Start regression run</button></div>
+        <div class="regression-callout"><div class="callout-icon">↻</div><div><strong>What is regression testing?</strong><p>Rerun previously executed tests after a change to check that existing functionality still works. Record results from your own execution; do not assume a test passed.</p></div></div>
+        <div class="panel"><div class="panel-heading"><div><h3>Regression run</h3><p>Choose a test, execute it again, and save the outcome.</p></div><span class="pill neutral" id="regression-count">0 runs</span></div><div class="regression-form"><label>Test case<select id="reg-test-select"></select></label><label>Actual result<input id="reg-actual" placeholder="What happened when you retested?"></label><label>Outcome<select id="reg-status"><option>Not Run</option><option>Pass</option><option>Fail</option><option>Blocked</option></select></label><button class="button button-primary" id="save-regression">Save result</button></div><div class="table-wrap"><table><thead><tr><th>Run</th><th>Test ID</th><th>Scenario</th><th>Actual result</th><th>Outcome</th><th>Date recorded</th></tr></thead><tbody id="regression-table-body"></tbody></table></div><div id="regression-empty" class="empty-state compact"><div class="empty-icon">↻</div><h3>No regression runs yet</h3><p>Choose a test case above and record your first retest.</p></div></div>
+      </section>
+
+      <footer class="main-footer"><span>ReaderQA · Independent QA practice project</span><span>Data stays in this browser via localStorage</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
