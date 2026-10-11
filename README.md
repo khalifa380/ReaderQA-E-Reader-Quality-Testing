@@ -1,4 +1,4 @@
-# ReaderQA-E-Reader-Quality-Testing
+
 # ReaderQA – E-Reader Quality Testing Simulator
 
 ReaderQA is a web-based QA testing simulator built with HTML, CSS, and JavaScript to practise software testing in a realistic, interactive environment. It combines a sample e-reader application with a QA workspace where users can execute automated functional checks, record test results, track defects, and review regression testing outcomes.
